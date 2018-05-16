@@ -1,0 +1,9 @@
+<div class="scroll" #scrollable>
+	<div class="viewPort" #viewPort>
+		<div class="row imgWraps" *ngFor="let row of rows">
+			<div class="col-4 imgWrap" *ngFor="let item of row">
+				<img [src]="item.src" class="img-fluid" />
+			</div>
+		</div>
+	</div>
+</div>

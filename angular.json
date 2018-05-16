@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -72,7 +73,8 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "styles.css"
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -110,6 +112,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "InfinityScrollingThumbnails": {
+      "root": "projects/infinity-scrolling-thumbnails",
+      "sourceRoot": "projects/infinity-scrolling-thumbnails/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/infinity-scrolling-thumbnails/tsconfig.lib.json",
+            "project": "projects/infinity-scrolling-thumbnails/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/infinity-scrolling-thumbnails/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/infinity-scrolling-thumbnails/src/test.ts",
+            "tsConfig": "projects/infinity-scrolling-thumbnails/tsconfig.spec.json",
+            "karmaConfig": "projects/infinity-scrolling-thumbnails/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/infinity-scrolling-thumbnails/tsconfig.lib.json",
+              "projects/infinity-scrolling-thumbnails/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

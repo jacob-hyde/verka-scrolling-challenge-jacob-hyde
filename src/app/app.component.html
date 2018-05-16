@@ -1,20 +1,68 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<nav class="navbar navbar-light bg-light">
+	<div class="container">
+  		<a class="navbar-brand" href="#">Verkada</a>
+	</div>
+</nav>
+<div class="container">
+	<form novalidate [formGroup]="timeSpanModel.form" #f="ngForm">
+		<div class="row align-items-top">
+			<div class="col-md-4 col-6 form-group">
+				<div class="form-row align-items-center">
+					<label class="col-md-auto" for="from">From: </label>
+					<div class="input-group col">
+						<input class="form-control" 
+							type="text" 
+							name="from" 
+							ngbDatepicker 
+							#fromDatePicker="ngbDatepicker" 
+							formControlName="from" 
+							(click)="fromDatePicker.toggle(); openDatepicker(fromDatePicker)" 
+							(dateSelect)="dateSelected($event)" />
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="fromDatePicker.toggle(); openDatepicker(fromDatePicker)" type="button">
+							  <i class="fa fa-calendar-alt" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-6 form-group">
+				<div class="form-row align-items-center">
+					<label class="col-md-auto" for="to">To: </label>
+					<div class="input-group col">
+						<input class="form-control" 
+							type="text" 
+							name="to" 
+							ngbDatepicker 
+							#toDatePicker="ngbDatepicker"
+							formControlName="to" 
+							(click)="toDatePicker.toggle(); openDatepicker(toDatePicker)" />
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" (click)="toDatePicker.toggle(); openDatepicker(toDatePicker)" type="button">
+							  <i class="fa fa-calendar-alt" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p class="col-md-1 px-md-0 col-12 mb-0 mt-2 text-center text-md-right">Timespan:</p>
+			<div class="form-row col-lg-3 col-md-3 col-12 mx-auto">
+				<div class="col-4 text-center">
+					<input class="form-control" type="number" name="hours" formControlName="hours" />
+					<small class="form-text text-muted">Hour</small>
+				</div>
+				<div class="col-4 text-center">
+					<input class="form-control" type="number" name="minutes" formControlName="minutes" />
+					<small class="form-text text-muted">Min</small>
+				</div>
+				<div class="col-4 text-center">
+					<input class="form-control" type="number" name="seconds" formControlName="seconds" />
+					<small class="form-text text-muted">Sec</small>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div id="imagesContainer">
+		<app-infinity-scrolling [timespan]="timeSpanModel" [type]="{image: 'jpg'}" [imagesPerRow]="3" [incrementBy]="'timestamp'" [baseURL]="'https://hiring.verkada.com/thumbs/'"></app-infinity-scrolling>
+	</div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
